@@ -1,0 +1,378 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="ProyectoProgra5Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="ARTICULOS">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ID_CATEGORIA" Type="int" />
+          <Property Name="ESTADO" Type="varchar" MaxLength="30" />
+          <Property Name="MARCA" Type="varchar" MaxLength="50" />
+          <Property Name="MODELO" Type="varchar" MaxLength="30" />
+          <Property Name="DESCRIPCION" Type="varchar" MaxLength="100" />
+          <Property Name="FOTOS" Type="varchar" MaxLength="250" />
+        </EntityType>
+        <EntityType Name="CATEGORIA_ARTICULO">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NOMBRE_CATEGORIA" Type="varchar" MaxLength="30" />
+          <Property Name="SUBCATEGORIA" Type="varchar" MaxLength="30" />
+        </EntityType>
+        <EntityType Name="PERSONA">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NOMBRE_COMPLETO" Type="varchar" MaxLength="200" />
+          <Property Name="USUARIO" Type="varchar" MaxLength="30" />
+          <Property Name="PASSWORD" Type="varchar" MaxLength="30" />
+          <Property Name="EMAIL" Type="varchar" MaxLength="50" />
+          <Property Name="ROL" Type="varchar" MaxLength="30" />
+        </EntityType>
+        <EntityType Name="PERSONA_ENTREGANDO">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ID_PERSONA" Type="int" />
+          <Property Name="ID_ARTICULO" Type="int" />
+          <Property Name="FECHA_ENTREGA" Type="datetime" />
+        </EntityType>
+        <EntityType Name="PERSONA_REPORTANDO_EXTRAVIO">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ID_PERSONA" Type="int" />
+          <Property Name="ID_CATEGORIA" Type="int" />
+          <Property Name="FECHA_REPORTE" Type="datetime" />
+        </EntityType>
+        <Association Name="FK_ARTICULOS_CATEGORIA">
+          <End Role="CATEGORIA_ARTICULO" Type="Self.CATEGORIA_ARTICULO" Multiplicity="0..1" />
+          <End Role="ARTICULOS" Type="Self.ARTICULOS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CATEGORIA_ARTICULO">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ARTICULOS">
+              <PropertyRef Name="ID_CATEGORIA" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PERSONA_ENTREGANDO_ARTICULO">
+          <End Role="ARTICULOS" Type="Self.ARTICULOS" Multiplicity="0..1" />
+          <End Role="PERSONA_ENTREGANDO" Type="Self.PERSONA_ENTREGANDO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ARTICULOS">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="PERSONA_ENTREGANDO">
+              <PropertyRef Name="ID_ARTICULO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PERSONA_ENTREGANDO_PERSONA">
+          <End Role="PERSONA" Type="Self.PERSONA" Multiplicity="0..1" />
+          <End Role="PERSONA_ENTREGANDO" Type="Self.PERSONA_ENTREGANDO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PERSONA">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="PERSONA_ENTREGANDO">
+              <PropertyRef Name="ID_PERSONA" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PERSONA_REPORTANDO_EXTRAVIO_CATEGORIA">
+          <End Role="CATEGORIA_ARTICULO" Type="Self.CATEGORIA_ARTICULO" Multiplicity="0..1" />
+          <End Role="PERSONA_REPORTANDO_EXTRAVIO" Type="Self.PERSONA_REPORTANDO_EXTRAVIO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CATEGORIA_ARTICULO">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="PERSONA_REPORTANDO_EXTRAVIO">
+              <PropertyRef Name="ID_CATEGORIA" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PERSONA_REPORTANDO_EXTRAVIO_PERSONA">
+          <End Role="PERSONA" Type="Self.PERSONA" Multiplicity="0..1" />
+          <End Role="PERSONA_REPORTANDO_EXTRAVIO" Type="Self.PERSONA_REPORTANDO_EXTRAVIO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PERSONA">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="PERSONA_REPORTANDO_EXTRAVIO">
+              <PropertyRef Name="ID_PERSONA" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="ProyectoProgra5ModelStoreContainer">
+          <EntitySet Name="ARTICULOS" EntityType="Self.ARTICULOS" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CATEGORIA_ARTICULO" EntityType="Self.CATEGORIA_ARTICULO" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PERSONA" EntityType="Self.PERSONA" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PERSONA_ENTREGANDO" EntityType="Self.PERSONA_ENTREGANDO" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PERSONA_REPORTANDO_EXTRAVIO" EntityType="Self.PERSONA_REPORTANDO_EXTRAVIO" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_ARTICULOS_CATEGORIA" Association="Self.FK_ARTICULOS_CATEGORIA">
+            <End Role="CATEGORIA_ARTICULO" EntitySet="CATEGORIA_ARTICULO" />
+            <End Role="ARTICULOS" EntitySet="ARTICULOS" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PERSONA_ENTREGANDO_ARTICULO" Association="Self.FK_PERSONA_ENTREGANDO_ARTICULO">
+            <End Role="ARTICULOS" EntitySet="ARTICULOS" />
+            <End Role="PERSONA_ENTREGANDO" EntitySet="PERSONA_ENTREGANDO" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PERSONA_ENTREGANDO_PERSONA" Association="Self.FK_PERSONA_ENTREGANDO_PERSONA">
+            <End Role="PERSONA" EntitySet="PERSONA" />
+            <End Role="PERSONA_ENTREGANDO" EntitySet="PERSONA_ENTREGANDO" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PERSONA_REPORTANDO_EXTRAVIO_CATEGORIA" Association="Self.FK_PERSONA_REPORTANDO_EXTRAVIO_CATEGORIA">
+            <End Role="CATEGORIA_ARTICULO" EntitySet="CATEGORIA_ARTICULO" />
+            <End Role="PERSONA_REPORTANDO_EXTRAVIO" EntitySet="PERSONA_REPORTANDO_EXTRAVIO" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PERSONA_REPORTANDO_EXTRAVIO_PERSONA" Association="Self.FK_PERSONA_REPORTANDO_EXTRAVIO_PERSONA">
+            <End Role="PERSONA" EntitySet="PERSONA" />
+            <End Role="PERSONA_REPORTANDO_EXTRAVIO" EntitySet="PERSONA_REPORTANDO_EXTRAVIO" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="ProyectoProgra5Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="ARTICULOS">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ID_CATEGORIA" Type="Int32" />
+          <Property Name="ESTADO" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="MARCA" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="MODELO" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="DESCRIPCION" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="FOTOS" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="CATEGORIA_ARTICULO" Relationship="Self.FK_ARTICULOS_CATEGORIA" FromRole="ARTICULOS" ToRole="CATEGORIA_ARTICULO" />
+          <NavigationProperty Name="PERSONA_ENTREGANDO" Relationship="Self.FK_PERSONA_ENTREGANDO_ARTICULO" FromRole="ARTICULOS" ToRole="PERSONA_ENTREGANDO" />
+        </EntityType>
+        <EntityType Name="CATEGORIA_ARTICULO">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NOMBRE_CATEGORIA" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="SUBCATEGORIA" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="ARTICULOS" Relationship="Self.FK_ARTICULOS_CATEGORIA" FromRole="CATEGORIA_ARTICULO" ToRole="ARTICULOS" />
+          <NavigationProperty Name="PERSONA_REPORTANDO_EXTRAVIO" Relationship="Self.FK_PERSONA_REPORTANDO_EXTRAVIO_CATEGORIA" FromRole="CATEGORIA_ARTICULO" ToRole="PERSONA_REPORTANDO_EXTRAVIO" />
+        </EntityType>
+        <EntityType Name="PERSONA">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NOMBRE_COMPLETO" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="USUARIO" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="PASSWORD" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="EMAIL" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ROL" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="PERSONA_ENTREGANDO" Relationship="Self.FK_PERSONA_ENTREGANDO_PERSONA" FromRole="PERSONA" ToRole="PERSONA_ENTREGANDO" />
+          <NavigationProperty Name="PERSONA_REPORTANDO_EXTRAVIO" Relationship="Self.FK_PERSONA_REPORTANDO_EXTRAVIO_PERSONA" FromRole="PERSONA" ToRole="PERSONA_REPORTANDO_EXTRAVIO" />
+        </EntityType>
+        <EntityType Name="PERSONA_ENTREGANDO">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ID_PERSONA" Type="Int32" />
+          <Property Name="ID_ARTICULO" Type="Int32" />
+          <Property Name="FECHA_ENTREGA" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="ARTICULOS" Relationship="Self.FK_PERSONA_ENTREGANDO_ARTICULO" FromRole="PERSONA_ENTREGANDO" ToRole="ARTICULOS" />
+          <NavigationProperty Name="PERSONA" Relationship="Self.FK_PERSONA_ENTREGANDO_PERSONA" FromRole="PERSONA_ENTREGANDO" ToRole="PERSONA" />
+        </EntityType>
+        <EntityType Name="PERSONA_REPORTANDO_EXTRAVIO">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ID_PERSONA" Type="Int32" />
+          <Property Name="ID_CATEGORIA" Type="Int32" />
+          <Property Name="FECHA_REPORTE" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="CATEGORIA_ARTICULO" Relationship="Self.FK_PERSONA_REPORTANDO_EXTRAVIO_CATEGORIA" FromRole="PERSONA_REPORTANDO_EXTRAVIO" ToRole="CATEGORIA_ARTICULO" />
+          <NavigationProperty Name="PERSONA" Relationship="Self.FK_PERSONA_REPORTANDO_EXTRAVIO_PERSONA" FromRole="PERSONA_REPORTANDO_EXTRAVIO" ToRole="PERSONA" />
+        </EntityType>
+        <Association Name="FK_ARTICULOS_CATEGORIA">
+          <End Role="CATEGORIA_ARTICULO" Type="Self.CATEGORIA_ARTICULO" Multiplicity="0..1" />
+          <End Role="ARTICULOS" Type="Self.ARTICULOS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CATEGORIA_ARTICULO">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ARTICULOS">
+              <PropertyRef Name="ID_CATEGORIA" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PERSONA_ENTREGANDO_ARTICULO">
+          <End Role="ARTICULOS" Type="Self.ARTICULOS" Multiplicity="0..1" />
+          <End Role="PERSONA_ENTREGANDO" Type="Self.PERSONA_ENTREGANDO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ARTICULOS">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="PERSONA_ENTREGANDO">
+              <PropertyRef Name="ID_ARTICULO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PERSONA_REPORTANDO_EXTRAVIO_CATEGORIA">
+          <End Role="CATEGORIA_ARTICULO" Type="Self.CATEGORIA_ARTICULO" Multiplicity="0..1" />
+          <End Role="PERSONA_REPORTANDO_EXTRAVIO" Type="Self.PERSONA_REPORTANDO_EXTRAVIO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CATEGORIA_ARTICULO">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="PERSONA_REPORTANDO_EXTRAVIO">
+              <PropertyRef Name="ID_CATEGORIA" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PERSONA_ENTREGANDO_PERSONA">
+          <End Role="PERSONA" Type="Self.PERSONA" Multiplicity="0..1" />
+          <End Role="PERSONA_ENTREGANDO" Type="Self.PERSONA_ENTREGANDO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PERSONA">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="PERSONA_ENTREGANDO">
+              <PropertyRef Name="ID_PERSONA" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PERSONA_REPORTANDO_EXTRAVIO_PERSONA">
+          <End Role="PERSONA" Type="Self.PERSONA" Multiplicity="0..1" />
+          <End Role="PERSONA_REPORTANDO_EXTRAVIO" Type="Self.PERSONA_REPORTANDO_EXTRAVIO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PERSONA">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="PERSONA_REPORTANDO_EXTRAVIO">
+              <PropertyRef Name="ID_PERSONA" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="ProyectoProgra5Entities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="ARTICULOS" EntityType="Self.ARTICULOS" />
+          <EntitySet Name="CATEGORIA_ARTICULO" EntityType="Self.CATEGORIA_ARTICULO" />
+          <EntitySet Name="PERSONA" EntityType="Self.PERSONA" />
+          <EntitySet Name="PERSONA_ENTREGANDO" EntityType="Self.PERSONA_ENTREGANDO" />
+          <EntitySet Name="PERSONA_REPORTANDO_EXTRAVIO" EntityType="Self.PERSONA_REPORTANDO_EXTRAVIO" />
+          <AssociationSet Name="FK_ARTICULOS_CATEGORIA" Association="Self.FK_ARTICULOS_CATEGORIA">
+            <End Role="CATEGORIA_ARTICULO" EntitySet="CATEGORIA_ARTICULO" />
+            <End Role="ARTICULOS" EntitySet="ARTICULOS" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PERSONA_ENTREGANDO_ARTICULO" Association="Self.FK_PERSONA_ENTREGANDO_ARTICULO">
+            <End Role="ARTICULOS" EntitySet="ARTICULOS" />
+            <End Role="PERSONA_ENTREGANDO" EntitySet="PERSONA_ENTREGANDO" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PERSONA_REPORTANDO_EXTRAVIO_CATEGORIA" Association="Self.FK_PERSONA_REPORTANDO_EXTRAVIO_CATEGORIA">
+            <End Role="CATEGORIA_ARTICULO" EntitySet="CATEGORIA_ARTICULO" />
+            <End Role="PERSONA_REPORTANDO_EXTRAVIO" EntitySet="PERSONA_REPORTANDO_EXTRAVIO" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PERSONA_ENTREGANDO_PERSONA" Association="Self.FK_PERSONA_ENTREGANDO_PERSONA">
+            <End Role="PERSONA" EntitySet="PERSONA" />
+            <End Role="PERSONA_ENTREGANDO" EntitySet="PERSONA_ENTREGANDO" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PERSONA_REPORTANDO_EXTRAVIO_PERSONA" Association="Self.FK_PERSONA_REPORTANDO_EXTRAVIO_PERSONA">
+            <End Role="PERSONA" EntitySet="PERSONA" />
+            <End Role="PERSONA_REPORTANDO_EXTRAVIO" EntitySet="PERSONA_REPORTANDO_EXTRAVIO" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="ProyectoProgra5ModelStoreContainer" CdmEntityContainer="ProyectoProgra5Entities">
+          <EntitySetMapping Name="ARTICULOS">
+            <EntityTypeMapping TypeName="ProyectoProgra5Model.ARTICULOS">
+              <MappingFragment StoreEntitySet="ARTICULOS">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="ID_CATEGORIA" ColumnName="ID_CATEGORIA" />
+                <ScalarProperty Name="ESTADO" ColumnName="ESTADO" />
+                <ScalarProperty Name="MARCA" ColumnName="MARCA" />
+                <ScalarProperty Name="MODELO" ColumnName="MODELO" />
+                <ScalarProperty Name="DESCRIPCION" ColumnName="DESCRIPCION" />
+                <ScalarProperty Name="FOTOS" ColumnName="FOTOS" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CATEGORIA_ARTICULO">
+            <EntityTypeMapping TypeName="ProyectoProgra5Model.CATEGORIA_ARTICULO">
+              <MappingFragment StoreEntitySet="CATEGORIA_ARTICULO">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="NOMBRE_CATEGORIA" ColumnName="NOMBRE_CATEGORIA" />
+                <ScalarProperty Name="SUBCATEGORIA" ColumnName="SUBCATEGORIA" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PERSONA">
+            <EntityTypeMapping TypeName="ProyectoProgra5Model.PERSONA">
+              <MappingFragment StoreEntitySet="PERSONA">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="NOMBRE_COMPLETO" ColumnName="NOMBRE_COMPLETO" />
+                <ScalarProperty Name="USUARIO" ColumnName="USUARIO" />
+                <ScalarProperty Name="PASSWORD" ColumnName="PASSWORD" />
+                <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />
+                <ScalarProperty Name="ROL" ColumnName="ROL" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PERSONA_ENTREGANDO">
+            <EntityTypeMapping TypeName="ProyectoProgra5Model.PERSONA_ENTREGANDO">
+              <MappingFragment StoreEntitySet="PERSONA_ENTREGANDO">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="ID_PERSONA" ColumnName="ID_PERSONA" />
+                <ScalarProperty Name="ID_ARTICULO" ColumnName="ID_ARTICULO" />
+                <ScalarProperty Name="FECHA_ENTREGA" ColumnName="FECHA_ENTREGA" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PERSONA_REPORTANDO_EXTRAVIO">
+            <EntityTypeMapping TypeName="ProyectoProgra5Model.PERSONA_REPORTANDO_EXTRAVIO">
+              <MappingFragment StoreEntitySet="PERSONA_REPORTANDO_EXTRAVIO">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="ID_PERSONA" ColumnName="ID_PERSONA" />
+                <ScalarProperty Name="ID_CATEGORIA" ColumnName="ID_CATEGORIA" />
+                <ScalarProperty Name="FECHA_REPORTE" ColumnName="FECHA_REPORTE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

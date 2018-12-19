@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="f831f62c026542e9a497aacc4e3e53e3" Name="Diagram1">
+        <EntityTypeShape EntityType="ProyectoProgra5Model.ARTICULOS" Width="1.5" PointX="3" PointY="3.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="ProyectoProgra5Model.CATEGORIA_ARTICULO" Width="1.5" PointX="0.75" PointY="3.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="ProyectoProgra5Model.PERSONA" Width="1.5" PointX="3.75" PointY="7.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ProyectoProgra5Model.PERSONA_ENTREGANDO" Width="1.5" PointX="5.25" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ProyectoProgra5Model.PERSONA_REPORTANDO_EXTRAVIO" Width="1.5" PointX="6" PointY="0.75" IsExpanded="true" />
+        <AssociationConnector Association="ProyectoProgra5Model.FK_ARTICULOS_CATEGORIA" ManuallyRouted="false" />
+        <AssociationConnector Association="ProyectoProgra5Model.FK_PERSONA_ENTREGANDO_ARTICULO" ManuallyRouted="false" />
+        <AssociationConnector Association="ProyectoProgra5Model.FK_PERSONA_REPORTANDO_EXTRAVIO_CATEGORIA" ManuallyRouted="false" />
+        <AssociationConnector Association="ProyectoProgra5Model.FK_PERSONA_ENTREGANDO_PERSONA" ManuallyRouted="false" />
+        <AssociationConnector Association="ProyectoProgra5Model.FK_PERSONA_REPORTANDO_EXTRAVIO_PERSONA" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
