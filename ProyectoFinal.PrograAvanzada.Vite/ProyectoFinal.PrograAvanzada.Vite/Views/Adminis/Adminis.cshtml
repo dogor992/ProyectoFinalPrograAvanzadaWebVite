@@ -1,0 +1,17 @@
+﻿
+@{
+    ViewBag.Title = "Adminis";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Bienvenido Administrador</h2>
+
+<p>
+    @Html.ActionLink("Usuarios del Sistema", "Index", "PERSONAs")<br>
+    @Html.ActionLink("Articulos", "Index", "ARTICULOS")<br>
+    @Html.ActionLink("Categorias de Articulos", "Index", "CATEGORIA_ARTICULO")<br>
+    @*@Html.ActionLink("Articulos Extraviados", "Index", "PERSONA_REPORTANDO_EXTRAVIO")<br>*@
+    @Html.ActionLink("Articulos Extraviados", "Index", "ARTICULOS_CUS")<BR>
+    @Html.ActionLink("Articulos Entregados", "Index", "PERSONA_ENTREGANDO")<br>
+</p>
+

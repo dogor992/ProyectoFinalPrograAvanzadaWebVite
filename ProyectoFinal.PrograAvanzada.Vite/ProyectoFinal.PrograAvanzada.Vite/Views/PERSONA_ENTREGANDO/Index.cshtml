@@ -1,0 +1,45 @@
+﻿@model IEnumerable<ProyectoFinal.PrograAvanzada.Vite.Model.PERSONA_ENTREGANDO>
+
+@{
+    ViewBag.Title = "Realizar Entrega";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Articulos</h2>
+
+<p>
+    @Html.ActionLink("Entregar Articulo", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.FECHA_ENTREGA)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ARTICULOS.DESCRIPCION)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PERSONA.NOMBRE_COMPLETO)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.FECHA_ENTREGA)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ARTICULOS.ESTADO)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PERSONA.NOMBRE_COMPLETO)
+        </td>
+        <td>
+            @Html.ActionLink("Editar Entrega", "Edit", new { id=item.ID }) |
+            @Html.ActionLink("Detalles", "Details", new { id=item.ID }) |
+        </td>
+    </tr>
+}
+
+</table>

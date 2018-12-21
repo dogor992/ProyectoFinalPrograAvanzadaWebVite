@@ -1,0 +1,12 @@
+﻿
+@{
+    ViewBag.Title = "Custudia";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Bienvenido Querido Guarda</h2>
+<p>
+    @Html.ActionLink("Articulos en custodia", "Index", "ARTICULOS_CUS")<br>
+    @Html.ActionLink("Realizar Entrega de articulo", "Create", "PERSONA_ENTREGANDO_CUS")<br><br><br><br><br>
+    @Html.ActionLink("Salir", "Validar", "Usuario")<br>
+</p>

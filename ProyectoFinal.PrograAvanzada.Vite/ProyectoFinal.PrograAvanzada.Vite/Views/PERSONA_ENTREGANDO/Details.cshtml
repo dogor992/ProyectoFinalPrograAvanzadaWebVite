@@ -1,0 +1,43 @@
+﻿@model ProyectoFinal.PrograAvanzada.Vite.Model.PERSONA_ENTREGANDO
+
+@{
+    ViewBag.Title = "Detalles Entregas";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>PERSONA_ENTREGANDO</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.FECHA_ENTREGA)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FECHA_ENTREGA)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ARTICULOS.ESTADO)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ARTICULOS.ESTADO)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PERSONA.NOMBRE_COMPLETO)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PERSONA.NOMBRE_COMPLETO)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Editar Entrega", "Edit", new { id = Model.ID }) |
+    @Html.ActionLink("Regresar lista entregas", "Index")
+</p>

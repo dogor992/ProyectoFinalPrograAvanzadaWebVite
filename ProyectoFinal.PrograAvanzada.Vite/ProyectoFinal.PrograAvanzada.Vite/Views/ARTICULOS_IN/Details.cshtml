@@ -1,0 +1,66 @@
+﻿@model ProyectoFinal.PrograAvanzada.Vite.Model.ARTICULOS
+
+@{
+    ViewBag.Title = "Detalles de articulo en custodia";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Detalles de articulo en custodia</h2>
+
+<div>
+    <h4>ARTICULOS</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.ESTADO)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ESTADO)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MARCA)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MARCA)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MODELO)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MODELO)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DESCRIPCION)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DESCRIPCION)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FOTOS)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FOTOS)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CATEGORIA_ARTICULO.NOMBRE_CATEGORIA)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CATEGORIA_ARTICULO.NOMBRE_CATEGORIA)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Regresar a lista articulos Custodia", "Index")
+</p>

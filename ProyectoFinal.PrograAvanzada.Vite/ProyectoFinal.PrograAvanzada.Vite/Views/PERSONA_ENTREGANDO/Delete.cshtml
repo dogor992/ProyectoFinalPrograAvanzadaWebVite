@@ -1,0 +1,49 @@
+﻿@model ProyectoFinal.PrograAvanzada.Vite.Model.PERSONA_ENTREGANDO
+
+@{
+    ViewBag.Title = "Borrar Entrega";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Delete</h2>
+
+<h3>Estas seguro de que desea borrar esta entrega?</h3>
+<div>
+    <h4>Entregas Personas</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.FECHA_ENTREGA)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FECHA_ENTREGA)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ARTICULOS.ESTADO)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ARTICULOS.ESTADO)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PERSONA.NOMBRE_COMPLETO)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PERSONA.NOMBRE_COMPLETO)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Borrar Entrega" class="btn btn-default" /> |
+            @Html.ActionLink("Regresar Lista Entregas", "Index")
+        </div>
+    }
+</div>

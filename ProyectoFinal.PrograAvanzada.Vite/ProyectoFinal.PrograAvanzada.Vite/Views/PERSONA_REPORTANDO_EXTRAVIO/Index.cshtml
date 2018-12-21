@@ -1,0 +1,45 @@
+﻿@model IEnumerable<ProyectoFinal.PrograAvanzada.Vite.Model.PERSONA_REPORTANDO_EXTRAVIO>
+
+@{
+    ViewBag.Title = "Reportar Extravio";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Crear Articulo Extraviado", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.FECHA_REPORTE)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CATEGORIA_ARTICULO.NOMBRE_CATEGORIA)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PERSONA.NOMBRE_COMPLETO)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.FECHA_REPORTE)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CATEGORIA_ARTICULO.NOMBRE_CATEGORIA)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PERSONA.NOMBRE_COMPLETO)
+        </td>
+        <td>
+            @Html.ActionLink("Editar", "Edit", new { id=item.ID }) |
+            @Html.ActionLink("Detalles", "Details", new { id=item.ID }) |
+        </td>
+    </tr>
+}
+
+</table>

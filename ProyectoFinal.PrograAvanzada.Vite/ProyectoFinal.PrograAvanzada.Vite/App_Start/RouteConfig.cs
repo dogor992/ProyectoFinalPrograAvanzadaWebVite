@@ -16,7 +16,8 @@ namespace ProyectoFinal.PrograAvanzada.Vite
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
-                defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
+                //defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
+                defaults: new { controller = "Usuario", action = "Validar", id = UrlParameter.Optional }
             );
         }
     }

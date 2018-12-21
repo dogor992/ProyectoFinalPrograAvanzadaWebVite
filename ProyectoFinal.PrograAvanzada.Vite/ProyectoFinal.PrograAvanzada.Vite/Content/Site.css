@@ -2,6 +2,10 @@
     padding-top: 50px;
     padding-bottom: 20px;
 }
+div.menu-principal table {
+    margin: 0 auto;
+    text-align: left;
+}
 
 /* Set padding to keep content from hitting the edges */
 .body-content {
@@ -22,3 +26,4 @@ select,
 textarea {
     max-width: 280px;
 }
+

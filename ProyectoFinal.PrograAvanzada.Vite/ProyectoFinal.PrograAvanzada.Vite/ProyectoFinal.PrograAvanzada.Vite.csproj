@@ -195,8 +195,20 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\AdminisController.cs" />
+    <Compile Include="Controllers\ARTICULOSController.cs" />
+    <Compile Include="Controllers\ARTICULOS_CUSController.cs" />
+    <Compile Include="Controllers\ARTICULOS_INController.cs" />
+    <Compile Include="Controllers\CATEGORIA_ARTICULOController.cs" />
+    <Compile Include="Controllers\CustodiaController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\InvitadoController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\PERSONAsController.cs" />
+    <Compile Include="Controllers\PERSONA_ENTREGANDOController.cs" />
+    <Compile Include="Controllers\PERSONA_ENTREGANDO_CUSController.cs" />
+    <Compile Include="Controllers\PERSONA_REPORTANDO_EXTRAVIOController.cs" />
+    <Compile Include="Controllers\UsuarioController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -265,6 +277,51 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
+    <Content Include="Views\Usuario\Validar.cshtml" />
+    <Content Include="Views\Usuario\NoHallado.cshtml" />
+    <Content Include="Views\Adminis\Adminis.cshtml" />
+    <Content Include="Views\PERSONAs\Create.cshtml" />
+    <Content Include="Views\PERSONAs\Delete.cshtml" />
+    <Content Include="Views\PERSONAs\Details.cshtml" />
+    <Content Include="Views\PERSONAs\Edit.cshtml" />
+    <Content Include="Views\PERSONAs\Index.cshtml" />
+    <Content Include="Views\ARTICULOS\Create.cshtml" />
+    <Content Include="Views\ARTICULOS\Delete.cshtml" />
+    <Content Include="Views\ARTICULOS\Details.cshtml" />
+    <Content Include="Views\ARTICULOS\Edit.cshtml" />
+    <Content Include="Views\ARTICULOS\Index.cshtml" />
+    <Content Include="Views\CATEGORIA_ARTICULO\Create.cshtml" />
+    <Content Include="Views\CATEGORIA_ARTICULO\Delete.cshtml" />
+    <Content Include="Views\CATEGORIA_ARTICULO\Details.cshtml" />
+    <Content Include="Views\CATEGORIA_ARTICULO\Edit.cshtml" />
+    <Content Include="Views\CATEGORIA_ARTICULO\Index.cshtml" />
+    <Content Include="Views\PERSONA_ENTREGANDO\Create.cshtml" />
+    <Content Include="Views\PERSONA_ENTREGANDO\Delete.cshtml" />
+    <Content Include="Views\PERSONA_ENTREGANDO\Details.cshtml" />
+    <Content Include="Views\PERSONA_ENTREGANDO\Edit.cshtml" />
+    <Content Include="Views\PERSONA_ENTREGANDO\Index.cshtml" />
+    <Content Include="Views\PERSONA_REPORTANDO_EXTRAVIO\Create.cshtml" />
+    <Content Include="Views\PERSONA_REPORTANDO_EXTRAVIO\Delete.cshtml" />
+    <Content Include="Views\PERSONA_REPORTANDO_EXTRAVIO\Details.cshtml" />
+    <Content Include="Views\PERSONA_REPORTANDO_EXTRAVIO\Edit.cshtml" />
+    <Content Include="Views\PERSONA_REPORTANDO_EXTRAVIO\Index.cshtml" />
+    <Content Include="Views\ARTICULOS_CUS\Create.cshtml" />
+    <Content Include="Views\ARTICULOS_CUS\Delete.cshtml" />
+    <Content Include="Views\ARTICULOS_CUS\Details.cshtml" />
+    <Content Include="Views\ARTICULOS_CUS\Edit.cshtml" />
+    <Content Include="Views\ARTICULOS_CUS\Index.cshtml" />
+    <Content Include="Views\Custodia\Custodia.cshtml" />
+    <Content Include="Views\PERSONA_ENTREGANDO_CUS\Create.cshtml" />
+    <Content Include="Views\PERSONA_ENTREGANDO_CUS\Delete.cshtml" />
+    <Content Include="Views\PERSONA_ENTREGANDO_CUS\Details.cshtml" />
+    <Content Include="Views\PERSONA_ENTREGANDO_CUS\Edit.cshtml" />
+    <Content Include="Views\PERSONA_ENTREGANDO_CUS\Index.cshtml" />
+    <Content Include="Views\Invitado\Invitado.cshtml" />
+    <Content Include="Views\ARTICULOS_IN\Create.cshtml" />
+    <Content Include="Views\ARTICULOS_IN\Delete.cshtml" />
+    <Content Include="Views\ARTICULOS_IN\Details.cshtml" />
+    <Content Include="Views\ARTICULOS_IN\Edit.cshtml" />
+    <Content Include="Views\ARTICULOS_IN\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -283,6 +340,10 @@
     <Content Include="Scripts\jquery-3.3.1.min.map" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\ProyectoFinal.PrograAvanzada.Vite.Model\ProyectoFinal.PrograAvanzada.Vite.Model.csproj">
+      <Project>{d99695ab-6b26-49e5-9447-52939036e67a}</Project>
+      <Name>ProyectoFinal.PrograAvanzada.Vite.Model</Name>
+    </ProjectReference>
     <ProjectReference Include="..\ProyectoFinal.PrograAvanzada.Vite.Wcf\ProyectoFinal.PrograAvanzada.Vite.Wcf.csproj">
       <Project>{104ccd27-4af7-46a1-9eee-517f8e9347b6}</Project>
       <Name>ProyectoFinal.PrograAvanzada.Vite.Wcf</Name>

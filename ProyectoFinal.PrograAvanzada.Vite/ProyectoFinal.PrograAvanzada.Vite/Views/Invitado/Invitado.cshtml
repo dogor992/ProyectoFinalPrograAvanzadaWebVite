@@ -1,0 +1,13 @@
+﻿
+@{
+    ViewBag.Title = "Invitado";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Bienvenido Querido Invitado @ViewBag.Correo</h2>
+
+<p>
+    @Html.ActionLink("Consulta de Articulos Bajo Custodia", "Index", "ARTICULOS_IN")<br>
+    @Html.ActionLink("Ingresar Reporte Articulo Perdido", "Create", "PERSONA_REPORTANDO_EXTRAVIO")<br/>
+</p>
+
